@@ -126,6 +126,7 @@ io.on('connection', function (socket) {
     });
 
     // Fire 'count_chatters' for updating Chatter Count in UI
+    // Met a jour le compteur des chatters 
     socket.on('update_chatter_count', function (data) {
         io.emit('count_chatters', data);
     });
