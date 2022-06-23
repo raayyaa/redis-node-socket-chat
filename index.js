@@ -38,10 +38,10 @@ fs.readFile('creds.json', 'utf-8', function (err, data) {
     });
 });
 
-//port
+//Port
 var port = process.env.PORT || 8000;
 
-// Start the Server
+//Server
 http.listen(port, function () {
     console.log('Server Started. Listening on *:' + port);
 });
@@ -52,7 +52,7 @@ var chatters = [];
 // Store messages in chatroom
 var chat_messages = [];
 
-// Express Middleware
+// Express
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: true
@@ -65,7 +65,7 @@ app.get('/', function (req, res) {
     });
 });
 
-// API - Join Chat
+// API - Rejoindre chat
 app.post('/join', function (req, res) {
     var username = req.body.username;
     if (chatters.indexOf(username) === -1) {
@@ -82,7 +82,7 @@ app.post('/join', function (req, res) {
     }
 });
 
-// API - Leave Chat
+// API - QuitterChat
 app.post('/leave', function (req, res) {
     var username = req.body.username;
     chatters.splice(chatters.indexOf(username), 1);

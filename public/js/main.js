@@ -4,7 +4,7 @@ $(function () {
     var socket = io();
     var chatter_count;
     $.get('/get_chatters', function (response) {
-        $('.chat-info').text("There are currently " + response.length + " people in the chat room");
+        $('.chat-info').text("Il y a  " + response.length + " personne(s) dans le chat");
         chatter_count = response.length; //update chatter count
     });
     $('#join-chat').click(function () {
@@ -16,7 +16,7 @@ $(function () {
                 username: username
             },
             success: function (response) {
-                if (response.status == 'OK') { //username doesn't already exists
+                if (response.status == 'OK') { //user pas encore existant
                     socket.emit('update_chatter_count', {
                         'action': 'increase'
                     });
@@ -34,7 +34,7 @@ $(function () {
                         }
                     });
                     $('.join-chat').hide(); //hide the container for joining the chat room.
-                } else if (response.status == 'FAILED') { //username already exists
+                } else if (response.status == 'FAILED') { //user deja existant
                     alert("Sorry but the username already exists, please choose another one");
                     $('#username').val('').focus();
                 }
