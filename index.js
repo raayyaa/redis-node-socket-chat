@@ -117,16 +117,16 @@ app.get('/get_chatters', function (req, res) {
 });
 
 // Socket Connection
-// UI Stuff
 io.on('connection', function (socket) {
 
     // Fire 'send' event for updating Message list in UI
+    //maj liste msg
     socket.on('message', function (data) {
         io.emit('send', data);
     });
 
     // Fire 'count_chatters' for updating Chatter Count in UI
-    // Met a jour le compteur des chatters 
+    // Met a jour le compteur des chatters
     socket.on('update_chatter_count', function (data) {
         io.emit('count_chatters', data);
     });
