@@ -35,7 +35,7 @@ $(function () {
                     });
                     $('.join-chat').hide(); //hide the container for joining the chat room.
                 } else if (response.status == 'FAILED') { //user deja existant
-                    alert("Sorry but the username already exists, please choose another one");
+                    alert("Desole mais ce pseudo existe deja ");
                     $('#username').val('').focus();
                 }
             }
@@ -54,7 +54,7 @@ $(function () {
                 if (response.status == 'OK') {
                     socket.emit('message', {
                         'username': username,
-                        'message': username + " has left the chat room.."
+                        'message': username + " a quitter le chat"
                     });
                     socket.emit('update_chatter_count', {
                         'action': 'decrease'
@@ -62,7 +62,7 @@ $(function () {
                     $('.chat').hide();
                     $('.join-chat').show();
                     $('#username').val('');
-                    alert('You have successfully left the chat room');
+                    alert('Vous avez quitte le chat avec succes');
                 }
             }
         });
@@ -101,6 +101,6 @@ $(function () {
         } else {
             chatter_count--;
         }
-        $('.chat-info').text("There are currently " + chatter_count + " people in the chat room");
+        $('.chat-info').text("Il y a actuellement " + chatter_count + " personne(s) dans le chat");
     });
 });
